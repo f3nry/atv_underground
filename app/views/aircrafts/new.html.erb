@@ -1,0 +1,48 @@
+<%= form_for @aircraft, :action => "create" do |f| %>
+  <fieldset>
+    <legend>Create Aircraft</legend>
+    <div class="control-group">
+      <%= f.label :tail_number, "Tail Number", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :tail_number, :class => "input-xlarge" %>
+        <p class="help-block">Tail number of the aircraft</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :bow, "BOW", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :bow, :class => "input-xlarge" %>
+        <p class="help-block">Weight of aircraft</p>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :cg, "Center of Gravity", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :cg, :class => "input-xlarge" %>
+        <p class="help-block">Normal Center of Gravity</p>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :moment, "Moment", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :moment, :class => "input-xlarge" %>
+        <p class="help-block">Moment of aircraft</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :model, "Model", :class => "control-label" %>
+      <div class="controls">
+        <%= f.select :model_id, Model.all.collect { |model| [ model.name, model.id ] } %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => "btn btn-success" %>
+      <%= link_to "Cancel", aircrafts_path, :class => "btn" %>
+    </div>
+  </fieldset>
+<% end %>

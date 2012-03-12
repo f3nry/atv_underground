@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AvtUnderground</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <h1>AVT Underground</h1>
+
+    <ul class="nav nav-tabs">
+      <li>
+        <%= link_to "Aircraft", aircrafts_path %>
+      </li>
+      <li>
+        <%= link_to "Models", models_path %>
+      </li>
+      <li></li>
+    </ul>
+
+    <%= yield %>
+
+    <div style="clear:both;"></div>
+  </div>
+
+</body>
+</html>

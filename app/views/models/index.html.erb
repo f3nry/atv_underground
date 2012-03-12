@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th style="width:200px;">Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @models.each do |model| %>
+  <tr>
+    <td><%= model.name %></td>
+    <td><%= link_to 'Show', model, :class => "btn" %></td>
+    <td><%= link_to 'Edit', edit_model_path(model), :class => "btn" %></td>
+    <td><%= link_to 'Destroy', model, confirm: 'Are you sure?', method: :delete, :class => "btn btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Model', new_model_path, :class => "btn btn-success" %>

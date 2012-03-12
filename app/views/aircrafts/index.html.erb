@@ -1,0 +1,23 @@
+<%= link_to "Add Aircraft", new_aircraft_path, :class => "btn btn-success add_button" %>
+<table class="table bordered-table">
+  <tr>
+    <th>Tail Number</th>
+    <th>BOW</th>
+    <th>CG</th>
+    <th>Moment</th>
+    <th>Last Updated</th>
+  </tr>
+
+  <% @aircrafts.each do |aircraft| %>
+    <tr>
+      <td><%= aircraft.tail_number %></td>
+      <td><%= aircraft.bow %></td>
+      <td><%= aircraft.cg %></td>
+      <td><%= aircraft.moment %></td>
+      <td><%= aircraft.updated_at.to_s %></td>
+      <td>
+
+      </td>
+    </tr>
+  <% end %>
+</table>
