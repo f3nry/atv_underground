@@ -1,11 +1,14 @@
 <%= link_to "Add Aircraft", new_aircraft_path, :class => "btn btn-success add_button" %>
-<table class="table bordered-table">
+<div style="clear:both"></div>
+<br/>
+<table class="table table-bordered">
   <tr>
     <th>Tail Number</th>
     <th>BOW</th>
     <th>CG</th>
     <th>Moment</th>
     <th>Last Updated</th>
+    <th></th>
   </tr>
 
   <% @aircrafts.each do |aircraft| %>
@@ -16,7 +19,9 @@
       <td><%= aircraft.moment %></td>
       <td><%= aircraft.updated_at.to_s %></td>
       <td>
-
+        <%= link_to "Show", aircraft_path(aircraft), :class => "btn" %>
+        <%= link_to "Edit", edit_aircraft_path(aircraft), :class => "btn" %>
+        <%= link_to "Delete", aircraft_path(aircraft), :method => :delete, :class => "btn btn-danger", :confirm => "Are you sure you want to delete this aircraft?" %>
       </td>
     </tr>
   <% end %>

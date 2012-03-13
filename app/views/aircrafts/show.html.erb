@@ -1,0 +1,91 @@
+<h2 style="float:left">Aircraft: <%= @aircraft.tail_number %></h2>
+<div style="float:right;">
+  <%= link_to "Edit", edit_aircraft_path(@aircraft), :class => "btn" %>
+  <%= link_to "Delete", aircraft_path(@aircraft), :method => :delete, :class => "btn btn-danger", :confirm => "Are you sure you want to delete this aircraft?" %>
+</div>
+<div style="clear:both"></div>
+<br/>
+<p>BOW: <%= @aircraft.bow %></p>
+<p>CG: <%= @aircraft.cg %></p>
+<p>Moment: <%= @aircraft.moment %></p>
+<p>Last Updated: <%= @aircraft.updated_at.to_s %></p>
+
+<div style="width:49%;float:left">
+  <h3 style="float:left">Positions</h3>
+  <div style="float:right">
+    <%= link_to "Add Position", new_aircraft_position_path(@aircraft), :class => "btn" %>
+  </div>
+  <div style="clear:both"></div>
+  <br/>
+  <table class="table table-bordered">
+    <tr>
+      <th>Name</th>
+      <th style="width:80px"></th>
+    </tr>
+    <% @aircraft.positions.each do |position| %>
+      <tr>
+        <td><%= position.name %></td>
+        <td>
+          <%= link_to raw(icon("pencil", "")), edit_position_path(position), :class => "btn" %>
+          <%= link_to raw(icon("remove")), position_path(position), :method => :destroy, :class => "btn btn-danger", :confirm => "Are you sure you want to delete this posiiton?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div style="width: 49%; margin-left: 8px; float:left">
+  <h3 style="float:left">CG Table</h3>
+  <div style="float:right">
+    <%= link_to "Add Entry", new_aircraft_cg_entry_path(@aircraft), :class => "btn" %>
+  </div>
+  <div style="clear:both"></div>
+  <br/>
+  <table class="table table-bordered">
+    <tr>
+      <th>Weight</th>
+      <th>Arm</th>
+      <th style="width:80px"></th>
+    </tr>
+
+    <% @aircraft.cg_entries.each do |entry| %>
+      <tr>
+        <td><%= entry.weight %></td>
+        <td><%= entry.arm %></td>
+        <td>
+          <%= link_to raw(icon("pencil", "")), edit_cg_entry_path(entry), :class => "btn" %>
+          <%= link_to raw(icon("remove")), cg_entry_path(entry), :method => :destroy, :class => "btn btn-danger", :confirm => "Are you sure you want to delete this entry?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div style="clear:both;"></div>
+
+<div style="width: 49%; float:left">
+  <h3 style="float:left">Moment Table</h3>
+  <div style="float:right">
+    <%= link_to "Add Entry", new_aircraft_moment_entry_path(@aircraft), :class => "btn" %>
+  </div>
+  <div style="clear:both"></div>
+  <br/>
+  <table class="table table-bordered">
+    <tr>
+      <th>Weight</th>
+      <th>Moment</th>
+      <th style="width:80px"></th>
+    </tr>
+
+    <% @aircraft.moment_entries.each do |entry| %>
+      <tr>
+        <td><%= entry.weight %></td>
+        <td><%= entry.moment %></td>
+        <td>
+          <%= link_to raw(icon("pencil", "")), edit_moment_entry_path(entry), :class => "btn" %>
+          <%= link_to raw(icon("remove")), moment_entry_path(entry), :method => :destroy, :class => "btn btn-danger", :confirm => "Are you sure you want to delete this moment?" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>  
+</div>

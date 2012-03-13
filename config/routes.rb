@@ -4,7 +4,18 @@ AvtUnderground::Application.routes.draw do
 
   root :to => 'pages#index'
 
-  resources :aircrafts
+  match 'app' => 'pages#app'
+
+  resources :aircrafts do
+    resources :positions
+    resources :cg_entries
+    resources :moment_entries
+  end
+
+  resources :positions
+  resources :cg_entries
+  resources :moment_entries
+
   resources :models
 
   # Sample of regular route:

@@ -1,0 +1,27 @@
+<h1>Listing moment_entries</h1>
+
+<table>
+  <tr>
+    <th>Weight</th>
+    <th>Moment</th>
+    <th>Aircraft</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @moment_entries.each do |moment_entry| %>
+  <tr>
+    <td><%= moment_entry.weight %></td>
+    <td><%= moment_entry.moment %></td>
+    <td><%= moment_entry.aircraft_id %></td>
+    <td><%= link_to 'Show', moment_entry %></td>
+    <td><%= link_to 'Edit', edit_moment_entry_path(moment_entry) %></td>
+    <td><%= link_to 'Destroy', moment_entry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Moment entry', new_moment_entry_path %>

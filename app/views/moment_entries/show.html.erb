@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Weight:</b>
+  <%= @moment_entry.weight %>
+</p>
+
+<p>
+  <b>Moment:</b>
+  <%= @moment_entry.moment %>
+</p>
+
+<p>
+  <b>Aircraft:</b>
+  <%= @moment_entry.aircraft_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_moment_entry_path(@moment_entry) %> |
+<%= link_to 'Back', moment_entries_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  arm: 1.5
+  moment: 1.5
+  aircraft_id: 1
+
+two:
+  arm: 1.5
+  moment: 1.5
+  aircraft_id: 1

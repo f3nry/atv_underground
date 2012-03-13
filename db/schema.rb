@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312203100) do
+ActiveRecord::Schema.define(:version => 20120313193514) do
 
   create_table "aircrafts", :force => true do |t|
     t.string   "tail_number"
@@ -23,10 +23,34 @@ ActiveRecord::Schema.define(:version => 20120312203100) do
     t.integer  "model_id"
   end
 
+  create_table "cg_entries", :force => true do |t|
+    t.float    "arm"
+    t.float    "weight"
+    t.integer  "aircraft_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "models", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "moment_entries", :force => true do |t|
+    t.float    "weight"
+    t.float    "moment"
+    t.integer  "aircraft_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "positions", :force => true do |t|
+    t.string   "name"
+    t.float    "moment"
+    t.integer  "aircraft_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

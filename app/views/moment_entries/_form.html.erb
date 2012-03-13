@@ -1,0 +1,33 @@
+<%= form_for(@moment_entry, :url => (@action == "update") ? moment_entry_path(@moment_entry) : "/aircrafts/#{@aircraft.id}/moment_entries") do |f| %>
+  <% if @moment_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@moment_entry.errors.count, "error") %> prohibited this moment_entry from being saved:</h2>
+
+      <ul>
+      <% @moment_entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :weight, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :weight, :class => "input-xlarge" %>
+      <p class="help-block">Weight of aircraft</p>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :moment, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :moment, :class => "input-xlarge" %>
+      <p class="help-block">Moment of aircraft</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+    <%= link_to "Cancel", aircraft_path(@aircraft), :class => "btn" %>
+  </div>
+<% end %>

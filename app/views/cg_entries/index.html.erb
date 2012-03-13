@@ -1,0 +1,27 @@
+<h1>Listing cg_entries</h1>
+
+<table>
+  <tr>
+    <th>Arm</th>
+    <th>Moment</th>
+    <th>Aircraft</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cg_entries.each do |cg_entry| %>
+  <tr>
+    <td><%= cg_entry.arm %></td>
+    <td><%= cg_entry.moment %></td>
+    <td><%= cg_entry.aircraft_id %></td>
+    <td><%= link_to 'Show', cg_entry %></td>
+    <td><%= link_to 'Edit', edit_cg_entry_path(cg_entry) %></td>
+    <td><%= link_to 'Destroy', cg_entry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cg entry', new_cg_entry_path %>
