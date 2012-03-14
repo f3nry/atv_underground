@@ -20,4 +20,10 @@ class Aircraft < ActiveRecord::Base
   def cg
     "%0.2f" % (moment / bow * 1000)
   end
+
+  def serializable_hash(options = {})
+    hash_info = super(options)
+    hash_info[:model_name] = model.name
+    hash_info
+  end
 end

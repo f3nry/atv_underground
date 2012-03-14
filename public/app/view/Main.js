@@ -1,12 +1,16 @@
 Ext.define('Avt.view.Main', {
-  extend: 'Ext.Panel',
+  extend: 'Ext.navigation.View',
+
+  requires: [
+    'Avt.view.AircraftsList',
+    'Avt.view.AircraftDetail'
+  ],
+
+  xtype: 'mainpanel',
 
   config: {
-  	items: [
-      { xtype: 'toolbar', docked: 'top', title: 'AVT Underground' }
-    ],
-    layout: 'fit',
-    styleHtmlContent: true,
-    html: '<h2>Hello World!</h2>I did it!'
+    items: [
+       { xtype: 'aircraftlist' }
+    ]
   }
 });

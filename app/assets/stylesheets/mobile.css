@@ -12,3 +12,26 @@
  *= require_self
 */
 
+.calc-head {
+	font-weight: bold;
+	font-size: 10px;
+	width: 20%;
+	padding-left: 2%;
+}
+
+.calc-label {
+  width: 30%;
+  padding-left: 0;
+}
+
+.right-align input {
+  text-align: right;
+}
+
+.right-align {
+  width: 100%;
+}
+
+.right-align .x-form-label {
+  display: none;
+}

@@ -1,6 +1,13 @@
 class AircraftsController < ApplicationController
   def index
-    @aircrafts = Aircraft.all
+    @aircrafts = Aircraft.includes(:model)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json do
+        render :json => @aircrafts
+      end
+    end
   end
 
   def show

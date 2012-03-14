@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require sencha-touch-all
+//= require sencha-touch-all-debug 
 //= require_self
 
 Ext.application({
@@ -18,8 +18,12 @@ Ext.application({
 
 	controllers: [ 'Main' ],
 	views: [ 'Main' ],
+	stores: [ 'Aircrafts' ],
+	models: [ 'Aircraft' ],
 
 	launch: function() {
-    Ext.create('Avt.view.Main');
+		Ext.Viewport.add({
+      xclass: 'Avt.view.Main'
+		});
 	}
 });
