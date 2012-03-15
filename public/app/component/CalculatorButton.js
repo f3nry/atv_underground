@@ -4,18 +4,12 @@ Ext.define('Avt.component.CalculatorButton', {
   requires: [ 'Avt.view.CalculatorOverlay' ],
 
   config: {
-    flex: 1, margin: 5, text: "0",
+    flex: 1, margin: 3, text: "0", cls: 'calc-button',
 
     handler: function() {
-      var self = this;
-      var expression = "";
+      var overlay = Calculator.getInstance(this);
 
-      
-      if(!this.overlay) {
-        this.overlay = Calculator.getInstance(this);
-      }
-
-      this.overlay.show();
+      overlay.show();
     }
   }
 });

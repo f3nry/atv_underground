@@ -9,7 +9,7 @@ Ext.define('Calculator', {
 
       var value = Ext.isNumeric(value) || value == "." ? value : this._text
       
-      if(parseFloat(element.value) == "0") {
+      if(parseFloat(element.value) == "0" && element.value != "-") {
         element.value = "";
       }
 
@@ -30,9 +30,13 @@ Ext.define('Calculator', {
     push_op: function() {
     	var element = Calculator.getCalcDisplay();
 
-      Calculator.expression += element.value + this._text;
-
-      Calculator.clear_value();
+    	if(this._text == "-" && element.value == 0) {
+        element.value = "-";
+    	} else {
+        Calculator.expression += element.value + this._text;
+        
+        Calculator.clear_value();
+    	}
     },
 
     calc: function() {
@@ -179,14 +183,17 @@ Ext.define('Avt.view.CalculatorOverlay', {
           { xtype: 'button', text: "0", handler: Calculator.set_value },
           { xtype: 'button', text: ".", handler: Calculator.set_value },
           { xtype: 'button', text: "Save", width: "46.8%", handler: function() {
+          	Calculator.calc();
             var element = Calculator.getCalcDisplay();
 
       	    Calculator.element.textElement.dom.innerText = element.value;
       	    Calculator.getInstance().hide();
+
+      	    Calculator.element.fireEvent("textchange", this, element.value);
           }}
         ]
       }
     ],
-    scrollable: true
+    scrollable: false
   }
 });

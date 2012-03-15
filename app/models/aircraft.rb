@@ -24,6 +24,9 @@ class Aircraft < ActiveRecord::Base
   def serializable_hash(options = {})
     hash_info = super(options)
     hash_info[:model_name] = model.name
+    hash_info[:positions] = positions
+    hash_info[:cg_entries] = cg_entries
+    hash_info[:moment_entries] = moment_entries
     hash_info
   end
 end

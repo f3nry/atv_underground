@@ -12,11 +12,20 @@ Ext.define('Avt.controller.Main', {
     }
   },
 
+  aircraft_details: {},
+
+  getDetail: function(record) {
+    return this.aircraft_details[record.data.id];
+  },
+
   showDetail: function(list, record) {
+    var detail = this.getDetail(record);
+
     this.getMain().push({
       xtype: 'aircraftdetail',
       title: record.data.tail_number,
-      data: record.data
+      data: record.raw,
+      record: record
     });
   }
 });

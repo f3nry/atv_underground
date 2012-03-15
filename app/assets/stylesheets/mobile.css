@@ -15,13 +15,21 @@
 .calc-head {
 	font-weight: bold;
 	font-size: 10px;
-	width: 20%;
-	padding-left: 2%;
+	width: 24%;
+	padding-left: 4px;
 }
 
 .calc-label {
-  width: 30%;
+  width: 29%;
   padding-left: 0;
+}
+
+.calc-body-field {
+  font-size: 10px;
+}
+
+.calc-button {
+  font-size: 11px;
 }
 
 .right-align input {
@@ -35,3 +43,19 @@
 .right-align .x-form-label {
   display: none;
 }
+
+.aircraft-detail {
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-name: fadein;
+}
+
+@-webkit-keyframes fadein {  
+    from {  
+    	opacity: 0;
+    }  
+  
+    to {  
+    	opacity: 1;
+    }  
+  } 
+
