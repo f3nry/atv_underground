@@ -1,0 +1,16 @@
+embed_assets: off
+
+javascript_compressor: uglifier
+compress_assets: off
+
+javascripts:
+  app:
+    - app/assets/javascripts/sencha-touch-all.js
+    - app/assets/javascripts/touch-charts.js
+    - public/app/**/*.js
+    - app/assets/javascripts/mobile.js
+
+stylesheets:
+  app:
+    - app/assets/stylesheets/resources/css/sencha-touch.css
+    - app/assets/stylesheets/mobile.css

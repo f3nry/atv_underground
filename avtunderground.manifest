@@ -1,0 +1,20 @@
+CACHE MANIFEST
+app/
+app
+assets/sencha-touch-all.js
+assets/touch-charts.js
+assets/mobile.js
+assets/resources/css/sencha-touch.css
+assets/mobile.css
+app/model/Position.js
+app/model/CgEntry.js
+app/model/Aircraft.js
+app/view/Main.js
+app/controller/Main.js
+app/store/Aircrafts.js
+app/store/AircraftsLocal.js
+app/store/AircraftsRest.js
+app/view/AircraftsList.js
+app/view/AircraftDetail.js
+app/component/CalculatorButton.js
+app/view/CalculatorOverlay.js

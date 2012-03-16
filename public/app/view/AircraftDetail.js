@@ -133,8 +133,6 @@ Ext.define('Avt.view.AircraftDetail', {
           ]
         });
 
-        console.log(store);
-
         Ext.defer(function() { 
           component.add({
         	  items: [{

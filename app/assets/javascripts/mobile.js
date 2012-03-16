@@ -19,7 +19,7 @@ Ext.application({
 
 	controllers: [ 'Main' ],
 	views: [ 'Main' ],
-	stores: [ 'Aircrafts' ],
+	stores: [ 'Aircrafts', 'AircraftsLocal', 'AircraftsRest' ],
 	models: [ 'Position', 'CgEntry', 'Aircraft' ],
 
 	launch: function() {

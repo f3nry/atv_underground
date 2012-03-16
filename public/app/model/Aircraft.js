@@ -150,8 +150,6 @@ Ext.define('Avt.model.Aircraft', {
       data.graph_data.push({ weight: total_weight, arm2: cumulative_arm });
     }
 
-    console.log(data);
-
     return data;
   }
 });

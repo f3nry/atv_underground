@@ -1,6 +1,7 @@
 AvtUnderground::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  match "app.manifest" => "pages#manifest"
 
   root :to => 'pages#index'
 
@@ -17,6 +18,7 @@ AvtUnderground::Application.routes.draw do
   resources :moment_entries
 
   resources :models
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
