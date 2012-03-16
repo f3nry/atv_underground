@@ -61,10 +61,25 @@ Ext.define('Avt.view.AircraftDetail', {
         var total_weight_id = Ext.id();
         var total_arm_id = Ext.id();
         var total_moment_id = Ext.id();
+        
+        var graph_id = Ext.id();
+        var graph_data = record.getGraphData();
+
+        var store = new Ext.create('Ext.data.Store', {
+            fields: [ 'weight', 'arm1', 'arm2' ],
+            data: graph_data.graph_data
+          });
+
         var update_total = function() {
-          Ext.getCmp(total_weight_id).setText(record.getTotalWeight());
-          Ext.getCmp(total_arm_id).setText(record.getCumulativeArm());
+          var total_weight = record.getTotalWeight();
+          var arm = record.getCumulativeArm();
+
+          Ext.getCmp(total_weight_id).setText(total_weight);
+          Ext.getCmp(total_arm_id).setText(arm);
           Ext.getCmp(total_moment_id).setText(record.getCumulativeMoment());
+
+          store.setData(record.getGraphData().graph_data);
+          Ext.getCmp(graph_id).redraw();
         }
 
         record.positions().each(function(position) {
@@ -118,15 +133,13 @@ Ext.define('Avt.view.AircraftDetail', {
           ]
         });
 
-        var store = new Ext.create('Ext.data.Store', {
-            fields: [ 'weight', 'arm1', 'arm2' ],
-            data: record.getGraphData()
-          });
+        console.log(store);
 
         Ext.defer(function() { 
           component.add({
         	  items: [{
             xtype: 'chart',
+            id: graph_id,
 
             width: "100%",
             height: 200,
@@ -139,11 +152,11 @@ Ext.define('Avt.view.AircraftDetail', {
                 position: 'left',
                 fields: ['weight'],
                 title: 'Weight',
-                minorTickSteps: 1,
+                minorTickSteps: 100,
                 roundToDecimal: true,
                 decimals: 0,
-                minimum: 2300,
-                maximum: 3700
+                minimum: graph_data.min_weight - 100,
+                maximum: graph_data.max_weight + 100
               },
               { 
                 type: 'Numeric',
@@ -152,7 +165,9 @@ Ext.define('Avt.view.AircraftDetail', {
                 title: 'Arm',
                 minorTickSteps: 1,
                 roundToDecimal: true,
-                decimals: 2
+                decimals: 2,
+                minimum: graph_data.min_arm1 - 1,
+                maximum: graph_data.max_arm1 + 1
               }
             ],
             series: [ 

@@ -7,6 +7,7 @@ Ext.define('Avt.view.AircraftsList', {
     store: 'Aircrafts',
     itemTpl: '{model_name}: {tail_number}',
 
-    onItemDisclosure: true
+    onItemDisclosure: true,
+    onItemSelect: true
   },
 });

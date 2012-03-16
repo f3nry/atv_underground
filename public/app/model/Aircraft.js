@@ -15,10 +15,9 @@ Ext.define('Avt.model.Aircraft', {
       { name: 'fuel_weight', type: 'float', defaultValue: 0.0 },
       { name: 'fuel_arm', type: 'float', defaultValue: 0.0 }
     ],
-
-    hasMany: [
-      { model: 'Avt.model.Position', name: 'positions' },
-      { model: 'Avt.model.CgEntry', name: 'cg_entries' }
+    
+    hasMany: [ 
+      { model: 'Avt.model.Position', name: 'positions' }
     ]
   },
 
@@ -105,11 +104,51 @@ Ext.define('Avt.model.Aircraft', {
   },
 
   getGraphData: function() {
-    var data = [];
+    var data = {
+      graph_data: [],
+      min_weight: 0,
+      max_weight: 0,
+      min_arm1: 0,
+      max_arm1: 0
+    };
 
-    this.cg_entries().each(function(entry) {
-      data.push({ weight: entry.data.weight, arm1: entry.data.arm });
+    if(this.raw.cg_entries.length > 0) {
+      data.min_weight = this.raw.cg_entries[0].weight;
+      data.max_weight = this.raw.cg_entries[0].weight;
+      data.min_arm1 = this.raw.cg_entries[0].arm;
+      data.max_arm1 = this.raw.cg_entries[0].arm;
+    }
+
+    Ext.each(this.raw.cg_entries, function(entry) {
+      data.graph_data.push({ weight: entry.weight, arm1: entry.arm });
+
+      if(entry.weight < data.min_weight) {
+        data.min_weight = entry.weight;
+      }
+
+      if(entry.weight > data.max_weight) {
+        data.max_weight = entry.weight;
+      }
+
+      if(entry.arm < data.min_arm1) {
+        data.min_arm1 = entry.arm;
+      }
+
+      if(entry.arm > data.max_arm1) {
+        data.max_arm1 = entry.arm;
+      }
     });
+
+    var total_weight = this.getTotalWeight();
+    var cumulative_arm = this.getCumulativeArm();
+    var zero_fuel_weight = this.getZeroFuelWeight();
+    var zero_fuel_arm = this.getZeroFuelArm();
+    
+    data.graph_data.push({ weight: zero_fuel_weight, arm2: zero_fuel_arm });
+
+    if(zero_fuel_weight != total_weight || zero_fuel_arm != cumulative_arm) {
+      data.graph_data.push({ weight: total_weight, arm2: cumulative_arm });
+    }
 
     console.log(data);
 

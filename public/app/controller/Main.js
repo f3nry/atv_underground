@@ -7,7 +7,8 @@ Ext.define('Avt.controller.Main', {
     },
     control: {
       'aircraftlist': {
-          disclose: 'showDetail'
+          disclose: 'showDetail',
+          select: 'showDetail'
       }
     }
   },
