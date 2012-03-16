@@ -1,4 +1,6 @@
 AvtUnderground::Application.routes.draw do
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match "app.manifest" => "pages#manifest"
@@ -18,6 +20,14 @@ AvtUnderground::Application.routes.draw do
   resources :moment_entries
 
   resources :models
+
+  namespace :admin do
+    resources :organizations do
+      member do
+        get :use
+      end
+    end
+  end
 
 
   # Sample of regular route:

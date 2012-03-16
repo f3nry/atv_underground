@@ -1,0 +1,17 @@
+<%= form_for @organization, :url => admin_organizations_path do |f| %>
+  <fieldset>
+    <legend><%= @organization.new_record? ? "Create" : "Update" %> Organization</legend>
+    <div class="control-group">
+      <%= f.label :name, "Name", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :class => "input-xlarge" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => "btn btn-success" %>
+      <%= link_to "Cancel", (@organization.new_record?) ? admin_organizations_path : @organization, :class => "btn" %>
+    </div>
+  </fieldset>
+<% end %>
+

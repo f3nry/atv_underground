@@ -20,6 +20,7 @@ class AircraftsController < ApplicationController
 
   def create
     @aircraft = Aircraft.new(params[:aircraft])
+    @aircraft.organization_id = current_organization
 
     if @aircraft.save
       redirect_to @aircraft

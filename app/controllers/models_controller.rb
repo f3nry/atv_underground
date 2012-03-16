@@ -1,8 +1,10 @@
 class ModelsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /models
   # GET /models.json
   def index
-    @models = Model.all
+    @models = Model.where(:organization_id => current_organization)
 
     respond_to do |format|
       format.html # index.html.erb

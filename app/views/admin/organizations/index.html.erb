@@ -1,0 +1,17 @@
+<%= link_to "Add Organization", new_admin_organization_path, :class => "btn btn-success add_button" %>
+<div style="clear:both;"></div>
+<br/>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+  </tr>
+
+  <% @organizations.each do |organization| %>
+    <tr>
+      <td><%= organization.name %></td>
+      <td>
+        <%= link_to "Use", use_admin_organization_path(organization), :class => "btn btn-success" %>
+      </td>
+    </tr>
+  <% end %>
+</table>

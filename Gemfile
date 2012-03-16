@@ -25,6 +25,8 @@ gem 'jquery-rails'
 gem 'rack-offline', :git => "https://github.com/wycats/rack-offline.git"
 gem 'jammit'
 
+gem 'devise'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

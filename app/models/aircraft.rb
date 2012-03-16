@@ -10,7 +10,8 @@ class Aircraft < ActiveRecord::Base
   validates :bow, :presence => true
 
   validates :moment, :presence => true
-
+  
+  belongs_to :organization
   belongs_to :model
 
   has_many :positions
